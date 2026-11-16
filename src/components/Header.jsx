@@ -17,8 +17,7 @@ const Header = ({ onMenuClick }) => {
           </button>
           
           <div className="ml-4 lg:ml-0">
-            <h1 className="text-2xl font-bold text-gray-900">e-Pragati</h1>
-            <p className="text-sm text-gray-500">Performance Management System</p>
+            <h1 className="text-2xl font-bold text-gray-1000">WorkSync</h1>
           </div>
         </div>
 
