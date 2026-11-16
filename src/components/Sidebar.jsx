@@ -39,9 +39,9 @@ const Sidebar = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
           <div className="flex items-center">
             <div className="h-8 w-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">eP</span>
+              <span className="text-white font-bold text-sm">WS</span>
             </div>
-            <span className="ml-2 text-lg font-semibold text-gray-900">e-Pragati</span>
+            <span className="ml-2 text-lg font-semibold text-gray-900">WorkSync</span>
           </div>
           <button
             onClick={onClose}
@@ -72,13 +72,6 @@ const Sidebar = ({ isOpen, onClose }) => {
             ))}
           </div>
         </nav>
-
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
-          <div className="text-xs text-gray-500 text-center">
-            <p>Brahmaputra Board</p>
-            <p>Ministry of Jal Shakti</p>
-          </div>
-        </div>
       </div>
     </>
   )
