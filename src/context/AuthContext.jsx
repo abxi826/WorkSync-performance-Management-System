@@ -13,11 +13,11 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
     id: 1,
-    name: 'Rajesh Kumar',
+    name: 'Moosa',
     role: 'Senior Engineer',
     department: 'Field Operations',
-    email: 'rajesh.kumar@bb.gov.in',
-    avatar: 'RK',
+    email: 'moosa.hirapurwala@bb.gov.in',
+    avatar: 'M',
     isManager: false
   })
 
