@@ -106,7 +106,7 @@ export const DataProvider = ({ children }) => {
   const [teamMembers, setTeamMembers] = useState([
     {
       id: 1,
-      name: 'Rajesh Kumar',
+      name: 'Moosa',
       role: 'Senior Engineer',
       overallScore: 87,
       goals: 4,
@@ -116,7 +116,7 @@ export const DataProvider = ({ children }) => {
     },
     {
       id: 2,
-      name: 'Priya Sharma',
+      name: 'Priya',
       role: 'Project Coordinator',
       overallScore: 92,
       goals: 5,
@@ -126,7 +126,7 @@ export const DataProvider = ({ children }) => {
     },
     {
       id: 3,
-      name: 'Amit Patel',
+      name: 'Amit',
       role: 'Field Supervisor',
       overallScore: 78,
       goals: 4,
@@ -136,7 +136,7 @@ export const DataProvider = ({ children }) => {
     },
     {
       id: 4,
-      name: 'Sunita Devi',
+      name: 'Sunita',
       role: 'Quality Inspector',
       overallScore: 89,
       goals: 3,
