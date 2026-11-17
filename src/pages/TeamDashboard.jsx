@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { useData } from '../context/DataContext'
@@ -274,9 +275,6 @@ const TeamDashboard = () => {
                     >
                       View Details
                     </Link>
-                    <button className="text-gray-600 hover:text-gray-900">
-                      Assign Goal
-                    </button>
                   </td>
                 </tr>
               ))}
