@@ -24,7 +24,7 @@ const Header = ({ onMenuClick }) => {
   const [taskReminders, setTaskReminders] = useState(true)
 
   // Detect selected employee profile
-  const profileMatch = location.pathname.match(/^\/team\/member\/(\d+)$/)
+  const profileMatch = location.pathname.match(/^\/team\/member\/(\d+)(?:\/|$)/)
 
   const selectedMember = profileMatch
     ? teamMembers.find(member => member.id === Number(profileMatch[1]))
