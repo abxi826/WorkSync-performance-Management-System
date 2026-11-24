@@ -335,6 +335,19 @@ export const DataProvider = ({ children }) => {
     }
   ])
 
+  // NOTIFICATION STATE
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      title: 'Welcome to WorkSync',
+      message: 'Your notification center is ready.',
+      time: new Date().toISOString(),
+      read: false,
+      memberId: 1
+    }
+  ])
+
+  // GOAL FUNCTIONS
   const addGoal = (goal) => {
     const newGoal = {
       ...goal,
@@ -352,6 +365,7 @@ export const DataProvider = ({ children }) => {
     ))
   }
 
+  // TASK FUNCTIONS
   const addTask = (task) => {
     const newTask = {
       ...task,
@@ -359,13 +373,66 @@ export const DataProvider = ({ children }) => {
       memberId: task.memberId || 1,
       status: 'pending'
     }
+
     setTasks([...tasks, newTask])
+
+    // Notify the assigned employee
+    const assignedMember = teamMembers.find(
+      member => member.id === newTask.memberId
+    )
+
+    addNotification({
+      title: 'New Task Assigned',
+      message: `${newTask.title} has been assigned to ${assignedMember?.name || 'an employee'}.`,
+      memberId: newTask.memberId
+    })
   }
 
   const updateTask = (id, updates) => {
+    const existingTask = tasks.find(task => task.id === id)
+
     setTasks(tasks.map(task =>
       task.id === id ? { ...task, ...updates } : task
     ))
+
+    // Notify when task status changes
+    if (existingTask && updates.status && existingTask.status !== updates.status) {
+      const assignedMember = teamMembers.find(
+        member => member.id === existingTask.memberId
+      )
+
+      addNotification({
+        title: 'Task Status Updated',
+        message: `${existingTask.title} status changed to ${updates.status}.`,
+        memberId: existingTask.memberId
+      })
+    }
+  }
+
+  // NOTIFICATION FUNCTIONS
+  const addNotification = (notification) => {
+    const newNotification = {
+      ...notification,
+      id: Date.now(),
+      time: new Date().toISOString(),
+      read: false
+    }
+
+    setNotifications(prev => [newNotification, ...prev])
+  }
+
+  const markAsRead = (id) => {
+    setNotifications(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, read: true } : item
+      )
+    )
+  }
+
+  const markAllAsRead = () => {
+    setNotifications(prev =>
+      prev.map(item => ({ ...item, read: true }))
+    )
   }
 
   return (
@@ -376,9 +443,15 @@ export const DataProvider = ({ children }) => {
       addGoal,
       updateGoal,
       addTask,
-      updateTask
+      updateTask,
+      notifications,
+      addNotification,
+      markAsRead,
+      markAllAsRead
     }}>
       {children}
     </DataContext.Provider>
   )
 }
+
+export default DataContext
